@@ -41,6 +41,7 @@ import javax.swing.JLabel;
 			
 			
 			MenuFenetre menu = new MenuFenetre();
+			
 			Image ImageAMontrer = new Image(menu.getImageChoisi());
 			ImagePanel imgpanel = new ImagePanel(ImageAMontrer);
 			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer);

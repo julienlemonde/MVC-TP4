@@ -14,6 +14,8 @@ public class ImagePanel extends JPanel{
 		this.img = img;
 		dms = new Dimension(500,500);
 		this.setPreferredSize(dms);
+		EcouteurSouris souris = new EcouteurSouris();
+		this.addMouseListener(souris);
 	}
 	
 	public void paintComponent(Graphics g){
