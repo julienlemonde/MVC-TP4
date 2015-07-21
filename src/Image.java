@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import javax.swing.JLabel;
 
 public class Image extends JLabel {
 	
-	private JLabel label;
 	private int x;
 	private int y;
 	BufferedImage image;
@@ -34,16 +34,13 @@ public class Image extends JLabel {
 	{
 		return y;
 	}
-
-	public void DrawImage()
-	{
-		Graphics g = image.getGraphics();
-		g.drawImage(image, 0, 0, null);
-	}
+	
+	
 	
 	public BufferedImage getBufferedImage()
 	{
 		return image;
 	}
+	
 
 }

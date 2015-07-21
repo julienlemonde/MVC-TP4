@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.Observable;
@@ -12,13 +13,16 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 	private int yPressed;
 	private int xRelease;
 	private int yRelease;
+	private ImagePanel panel;
 	private Dimension translation;
+	private int Notches;
 	private boolean scrolled;
 	
 	
-	public EcouteurSouris() {
+	public EcouteurSouris(ImagePanel imgpanel) {
 		// TODO Auto-generated constructor stub
 		ObserverSouris obs = new ObserverSouris();
+		this.panel = imgpanel;
 		this.addObserver(obs);
 	}
 	@Override
@@ -32,18 +36,21 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 		// TODO Auto-generated method stub
 		xPressed = e.getX();
 		yPressed = e.getY();
+		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+		
+		
 		xRelease = e.getX();
 		yRelease = e.getY();
-		boolean test = true;
 		translation = new Dimension(xRelease - xPressed, yRelease - yPressed);
+		System.out.println(translation.width+ ","+translation.height);
 		setChanged();
-		notifyObservers(test);
+		notifyObservers(translation);
 	}
 
 	@Override
@@ -60,11 +67,17 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
-		scrolled = true;
-		e.getWheelRotation();
+		
+		Notches = e.getWheelRotation();
 		setChanged();
-		notifyObservers(scrolled);
-		scrolled = false;
+		notifyObservers(Notches);
+		
+	}
+	
+	public ImagePanel getImagePanel()
+	{
+		return panel;
 	}
 
+	
 }
