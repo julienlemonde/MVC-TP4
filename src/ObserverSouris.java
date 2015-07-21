@@ -5,16 +5,29 @@ import java.util.Observer;
 
 public class ObserverSouris implements Observer {
 
+		private int width;
+		private int height;
+		private EcouteurSouris test;
+		
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 			if(o instanceof EcouteurSouris)
 			{
-				System.out.println(arg.getClass().getName());
+				
 				if(arg.getClass().getName() == "java.awt.Dimension")
-				System.out.println("Il y a update" + arg);
-				if(arg.getClass().getName() == "java.lang.Boolean")
-					System.out.println("Scrolled");
+				{
+					
+					Command translation = new Translation((Dimension) arg,((EcouteurSouris) o).getImagePanel());
+					GestionnaireCommande.getInstance().addCommand(translation);
+					
+				}
+				
+				if(arg.getClass().getName() == "java.lang.Integer")
+				{
+					Command zoom = new Zoom((int) arg, ((EcouteurSouris) o).getImagePanel());
+					GestionnaireCommande.getInstance().addCommand(zoom);
+				}
 			}
 			
 		
