@@ -14,11 +14,16 @@
 	import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -58,7 +63,22 @@ import javax.swing.KeyStroke;
 	       
 			menu.getItem(0).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
+					try {
+						InputStream file = new FileInputStream("src/backup.data");
+						InputStream buffer = new BufferedInputStream(file);
+						ObjectInputStream input = new ObjectInputStream (buffer);
+					    backupToSave = (Backup)input.readObject();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 				    
 				}
@@ -67,7 +87,7 @@ import javax.swing.KeyStroke;
 				public void actionPerformed(ActionEvent arg0) {
 					
 							try {
-						      OutputStream file = new FileOutputStream("src/backup.ver");
+						      OutputStream file = new FileOutputStream("src/backup.data");
 						      OutputStream buffer = new BufferedOutputStream(file);
 						      ObjectOutput output = new ObjectOutputStream(buffer);
 							  output.writeObject(backupToSave);
