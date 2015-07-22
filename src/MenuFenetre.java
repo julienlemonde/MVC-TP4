@@ -89,8 +89,9 @@ import javax.swing.KeyStroke;
 							try {
 						      OutputStream file = new FileOutputStream("src/backup.data");
 						      OutputStream buffer = new BufferedOutputStream(file);
-						      ObjectOutput output = new ObjectOutputStream(buffer);
+							  ObjectOutput output = new ObjectOutputStream(buffer);
 							  output.writeObject(backupToSave);
+
 							  }
 						    catch (FileNotFoundException e) {
 								// TODO Auto-generated catch block
