@@ -1,8 +1,13 @@
 import java.awt.Dimension;
+import java.io.Serializable;
 
 
-public class Perspective {
+public class Perspective implements Serializable{
 	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5793748608249541061L;
 		private int translateX;
 		private int translateY;
 		private int positionXDepart;

@@ -1,9 +1,14 @@
+import java.io.Serializable;
 import java.util.Observable;
 
 
 
-public class Model extends Observable {
+public class Model extends Observable implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2975882143448572952L;
 	private Image img;
 	private ImagePanel imgpanel;
 	private ImagePanel imgpanel2;

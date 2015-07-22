@@ -4,7 +4,7 @@
 	Cours:  LOG121
 	Projet: Squelette du laboratoire #1
 	Nom du fichier: FenetrePrincipale.java
-	Date cr����: 2013-05-03
+	Date cr������������: 2013-05-03
 	*******************************************************
 	Historique des modifications
 	*******************************************************
@@ -25,7 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 	 
 	/**
-	 * Cette classe repr��sente la fen��tre principale de l'application 
+	 * Cette classe repr������sente la fen������tre principale de l'application 
 	 * @author Patrice Boucher
 	 * @date 2013/05/04
 	 */
@@ -47,7 +47,7 @@ import javax.swing.JLabel;
 			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer,true);
 			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);*/
 			Model newModel = new Model(new Image(new File("src/yosemite-2.jpg")));
-			
+			menu.setModelToSave(newModel);
 			
 			this.setLayout(new BorderLayout());
 			this.add(menu,BorderLayout.NORTH);
@@ -59,8 +59,8 @@ import javax.swing.JLabel;
 			this.add(newModel.getPanel3(),BorderLayout.EAST);
 			
 			this.pack();
-			this.setVisible(true); // Rend la fen��tre principale visible.
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... �� r��viser selon le comportement que vous d��sirez ...
+			this.setVisible(true); // Rend la fen������tre principale visible.
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... ������ r������viser selon le comportement que vous d������sirez ...
 		}
 
 	}

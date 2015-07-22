@@ -3,7 +3,7 @@
 	Cours:  LOG121
 	Projet: Squelette du laboratoire #1
 	Nom du fichier: MenuFenetre.java
-	Date cr����: 2013-05-03
+	Date cr������������: 2013-05-03
 	*******************************************************
 	Historique des modifications
 	*******************************************************
@@ -14,7 +14,14 @@
 	import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -25,7 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 	/**
-	 * Cr��e le menu de la fen��tre de l'application��
+	 * Cr������e le menu de la fen������tre de l'application������
 	 */
 	public class MenuFenetre extends JMenuBar {
 		
@@ -34,6 +41,7 @@ import javax.swing.KeyStroke;
 		 */
 		private File ImageChoisi;
 		private EcouteurMenu ecouteur;
+		Backup backupToSave;
 		public MenuFenetre() {
 			ImageChoisi = new File("src/yosemite-2.jpg");
 			ecouteur = new EcouteurMenu();
@@ -43,7 +51,7 @@ import javax.swing.KeyStroke;
 		
 		protected void addMenuFichier() {
 			JMenu menu = new JMenu("Fichier");
-	       
+			   menu.add(new JMenuItem("Ouvrir"));
 	           menu.add(new JMenuItem("Sauvegarder"));
 	           menu.add(new JMenuItem("Quitter"));
 	        
@@ -51,10 +59,30 @@ import javax.swing.KeyStroke;
 			menu.getItem(0).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
+					
 				    
 				}
 			});
 			menu.getItem(1).addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+							try {
+						      OutputStream file = new FileOutputStream("src/backup.ver");
+						      OutputStream buffer = new BufferedOutputStream(file);
+						      ObjectOutput output = new ObjectOutputStream(buffer);
+							  output.writeObject(backupToSave);
+							  }
+						    catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} 
+				    
+				}
+			});
+			menu.getItem(2).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					System.exit(0);
 				    
@@ -76,6 +104,9 @@ import javax.swing.KeyStroke;
 		public File getImageChoisi()
 		{
 			return ImageChoisi;
+		}
+		public void setModelToSave(Model model){
+			this.backupToSave = new Backup(model.getPanel2().getPerspective(), model.getPanel3().getPerspective());
 		}
 	}
 
