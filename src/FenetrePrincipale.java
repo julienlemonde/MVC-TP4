@@ -4,7 +4,7 @@
 	Cours:  LOG121
 	Projet: Squelette du laboratoire #1
 	Nom du fichier: FenetrePrincipale.java
-	Date créé: 2013-05-03
+	Date cr����: 2013-05-03
 	*******************************************************
 	Historique des modifications
 	*******************************************************
@@ -25,7 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 	 
 	/**
-	 * Cette classe représente la fenêtre principale de l'application 
+	 * Cette classe repr��sente la fen��tre principale de l'application 
 	 * @author Patrice Boucher
 	 * @date 2013/05/04
 	 */
@@ -42,20 +42,25 @@ import javax.swing.JLabel;
 			
 			MenuFenetre menu = new MenuFenetre();
 			
-			Image ImageAMontrer = new Image(menu.getImageChoisi());
+			/*Image ImageAMontrer = new Image(menu.getImageChoisi());
 			ImagePanel imgpanel = new ImagePanel(ImageAMontrer,false);
 			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer,true);
-			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);
+			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);*/
+			Model newModel = new Model(new Image(new File("src/yosemite-2.jpg")));
+			
 			
 			this.setLayout(new BorderLayout());
 			this.add(menu,BorderLayout.NORTH);
-			this.add(imgpanel,BorderLayout.WEST);
+			/*this.add(imgpanel,BorderLayout.WEST);
 			this.add(imgpanel2,BorderLayout.CENTER);
-			this.add(imgpanel3,BorderLayout.EAST);
+			this.add(imgpanel3,BorderLayout.EAST);*/
+			this.add(newModel.getPanel1(),BorderLayout.WEST);
+			this.add(newModel.getPanel2(),BorderLayout.CENTER);
+			this.add(newModel.getPanel3(),BorderLayout.EAST);
 			
 			this.pack();
-			this.setVisible(true); // Rend la fenêtre principale visible.
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... à réviser selon le comportement que vous désirez ...
+			this.setVisible(true); // Rend la fen��tre principale visible.
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... �� r��viser selon le comportement que vous d��sirez ...
 		}
 
 	}
