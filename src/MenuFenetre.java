@@ -36,6 +36,7 @@ import javax.swing.KeyStroke;
 
 		public MenuFenetre() {
 			ImageChoisi = new File("src/yosemite-2.jpg");
+			
 			addMenuFichier();
 			addMenuChoisirImage();
 		}

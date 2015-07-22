@@ -41,10 +41,11 @@ import javax.swing.JLabel;
 			
 			
 			MenuFenetre menu = new MenuFenetre();
+			
 			Image ImageAMontrer = new Image(menu.getImageChoisi());
-			ImagePanel imgpanel = new ImagePanel(ImageAMontrer);
-			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer);
-			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer);
+			ImagePanel imgpanel = new ImagePanel(ImageAMontrer,false);
+			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer,true);
+			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);
 			
 			this.setLayout(new BorderLayout());
 			this.add(menu,BorderLayout.NORTH);
