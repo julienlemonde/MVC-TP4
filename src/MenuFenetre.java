@@ -3,7 +3,7 @@
 	Cours:  LOG121
 	Projet: Squelette du laboratoire #1
 	Nom du fichier: MenuFenetre.java
-	Date créé: 2013-05-03
+	Date cr����: 2013-05-03
 	*******************************************************
 	Historique des modifications
 	*******************************************************
@@ -25,18 +25,18 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 	/**
-	 * Crée le menu de la fenêtre de l'applicationé
+	 * Cr��e le menu de la fen��tre de l'application��
 	 */
-	public class MenuFenetre extends JMenuBar{
+	public class MenuFenetre extends JMenuBar {
 		
 		/**
 		 * 
 		 */
 		private File ImageChoisi;
-
+		private EcouteurMenu ecouteur;
 		public MenuFenetre() {
 			ImageChoisi = new File("src/yosemite-2.jpg");
-			
+			ecouteur = new EcouteurMenu();
 			addMenuFichier();
 			addMenuChoisirImage();
 		}
@@ -64,23 +64,15 @@ import javax.swing.KeyStroke;
 		}
 		protected void addMenuChoisirImage() {
 			final JMenuItem menu = new JMenuItem("ChoisirImage");
-			
 	       
-			menu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JFileChooser ImageAchoisir = new JFileChooser();
-					int returnVal = ImageAchoisir.showOpenDialog(menu);
+			menu.addActionListener(ecouteur);
 					
-					if (returnVal == JFileChooser.APPROVE_OPTION) {
-			            ImageChoisi = ImageAchoisir.getSelectedFile();
-			            
-					}
+			add(menu); 
+				
 				    
 				}
-			});
 			
-			add(menu);
-		}
+			
 		public File getImageChoisi()
 		{
 			return ImageChoisi;

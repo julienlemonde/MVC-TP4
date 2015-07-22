@@ -12,11 +12,7 @@ public class ImagePanel extends JPanel{
 	
 	 private Image img;
 	 private Dimension dms;
-	 private int translateX;
-	 private int translateY;
-	 private int positionXDepart;
-	 private int positionYDepart;
-	 private double scale;
+	 private Perspective perspective;
 	 
 	
 	public ImagePanel(Image img, boolean AEcouter)
@@ -24,11 +20,8 @@ public class ImagePanel extends JPanel{
 		this.img = img;
 		dms = new Dimension(400,300);
 		this.setPreferredSize(dms);
-		translateX = 0;
-		translateY = 0;
-		positionXDepart = 0;
-		positionYDepart = 0;
-		scale = 0.5;
+		perspective = new Perspective(0, 0, 0, 0, 0.35);
+		
 		
 		
 		if(AEcouter)
@@ -54,24 +47,24 @@ public class ImagePanel extends JPanel{
     }
 	public void paintComponent(Graphics g, String Type){
 		super.paintComponent(g);
-		double z = scale*scale;
+		double z = perspective.getScale()*perspective.getScale();
 		Graphics2D ourGraphics = (Graphics2D) g;
 		AffineTransform t = new AffineTransform();
 		double currentImgWidth = img.getWidth()*z, currentImgHeight = img.getHeight()*z;
 		if(Type =="scale")
 		{
 
-			positionXDepart = (int) (currentImgWidth/2);
-			positionYDepart = (int) (currentImgHeight/2);
-			t.translate(positionXDepart,positionYDepart);
+			perspective.setPositionXDepart((int) (this.getWidth()/2 - (currentImgWidth/2)));
+			perspective.setPositionYDepart((int) (this.getHeight()/2-(currentImgHeight/2)));
+			t.translate(perspective.getPositionXDepart(), perspective.getPositionYDepart());
 			
 		}
 		
 		if(Type == "translation")
 		{
-			positionXDepart+=translateX;
-			positionYDepart+=translateY;
-			t.translate(positionXDepart, positionYDepart);
+			perspective.setPositionXDepart(perspective.getPositionXDepart()+perspective.getTranslateX());
+			perspective.setPositionYDepart(perspective.getPositionYDepart()+perspective.getTranslateY());
+			t.translate(perspective.getPositionXDepart(), perspective.getPositionYDepart());
 		}
 		
 		
@@ -79,7 +72,7 @@ public class ImagePanel extends JPanel{
 		//Et j'affiche en utilisant la transformation
 		ourGraphics.drawImage(img.getBufferedImage(),t, null);
 
-		//On libère un peu de mémoire histoire de laisser le GC tranquille un peu plus longtemps
+		//On lib��re un peu de m��moire histoire de laisser le GC tranquille un peu plus longtemps
 		ourGraphics.dispose();
 		
 	}
@@ -88,21 +81,28 @@ public class ImagePanel extends JPanel{
 	{
 		return img;
 	}
+	public void setImage(Image nouvelleImage)
+	{
+		img = nouvelleImage;
+	}
 	public Dimension getDimension(){
 		return dms;
 	}
 	
 	public void setTranslation(int witdh,int height)
 	{
-		translateX = witdh;
-		translateY = height;
+		perspective.setTranslateX(witdh);
+		perspective.setTranslateY(height);
 		paintComponent(super.getGraphics(),"translation");
 	}
 	public void setScale(int nombreZoom)
 	{
-		this.scale += (.01 * nombreZoom);
-		this.scale = Math.max(0.00001, this.scale); 
+		perspective.setScale(perspective.getScale() + (.01 * nombreZoom));
+		perspective.setScale(Math.max(0.00001, perspective.getScale())); 
 		paintComponent(super.getGraphics(),"scale");
+	}
+	public Perspective getPerspective(){
+		return perspective;
 	}
 
 	
