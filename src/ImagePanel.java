@@ -60,7 +60,7 @@ public class ImagePanel extends JPanel{
 			
 		}
 		
-		if(Type == "translation")
+		else if(Type == "translation")
 		{
 			perspective.setPositionXDepart(perspective.getPositionXDepart()+perspective.getTranslateX());
 			perspective.setPositionYDepart(perspective.getPositionYDepart()+perspective.getTranslateY());
@@ -74,7 +74,7 @@ public class ImagePanel extends JPanel{
 
 		//On lib��re un peu de m��moire histoire de laisser le GC tranquille un peu plus longtemps
 		ourGraphics.dispose();
-		
+
 	}
 	
 	public Image getImage()
@@ -84,6 +84,8 @@ public class ImagePanel extends JPanel{
 	public void setImage(Image nouvelleImage)
 	{
 		img = nouvelleImage;
+		perspective = new Perspective(0, 0, 0, 0, 0.55);
+		repaint();
 	}
 	public Dimension getDimension(){
 		return dms;

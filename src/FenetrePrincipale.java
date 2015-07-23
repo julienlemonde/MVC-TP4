@@ -40,14 +40,16 @@ import javax.swing.JLabel;
 		public FenetrePrincipale() throws IOException{
 			
 			
-			MenuFenetre menu = new MenuFenetre();
+			
 			
 			/*Image ImageAMontrer = new Image(menu.getImageChoisi());
 			ImagePanel imgpanel = new ImagePanel(ImageAMontrer,false);
 			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer,true);
 			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);*/
 			Model newModel = new Model(new Image(new File("src/yosemite-2.jpg")));
+			MenuFenetre menu = new MenuFenetre(newModel);
 			menu.setModelToSave(newModel);
+			
 			
 			this.setLayout(new BorderLayout());
 			this.add(menu,BorderLayout.NORTH);

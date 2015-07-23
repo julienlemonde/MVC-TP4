@@ -46,10 +46,12 @@ import javax.swing.KeyStroke;
 		 */
 		private File ImageChoisi;
 		private EcouteurMenu ecouteur;
+		private Model modelAUtiliser;
 		Backup backupToSave;
-		public MenuFenetre() {
+		public MenuFenetre(Model model) {
 			ImageChoisi = new File("src/yosemite-2.jpg");
-			ecouteur = new EcouteurMenu();
+			modelAUtiliser = model;
+			ecouteur = new EcouteurMenu(modelAUtiliser);
 			addMenuFichier();
 			addMenuChoisirImage();
 		}
