@@ -47,7 +47,7 @@ import javax.swing.KeyStroke;
 		private File ImageChoisi;
 		private EcouteurMenu ecouteur;
 		private Model modelAUtiliser;
-		Backup backupToSave;
+		private Backup backupToSave;
 		public MenuFenetre(Model model) {
 			ImageChoisi = new File("src/yosemite-2.jpg");
 			modelAUtiliser = model;
@@ -65,12 +65,20 @@ import javax.swing.KeyStroke;
 	       
 			menu.getItem(0).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-
-					try {
-						InputStream file = new FileInputStream("src/backup.data");
-						InputStream buffer = new BufferedInputStream(file);
-						ObjectInputStream input = new ObjectInputStream (buffer);
-					    backupToSave = (Backup)input.readObject();
+					
+					JFileChooser popupFileChooser = new JFileChooser();
+					int retrival = popupFileChooser.showSaveDialog(null);
+				    if (retrival == JFileChooser.APPROVE_OPTION) {
+					
+				    try {
+						InputStream file = new FileInputStream(popupFileChooser.getSelectedFile());
+						ObjectInputStream input = new ObjectInputStream (file);
+						Backup tempBackup = (Backup) input.readObject();
+						input.close();
+						backupToSave.getP1().copyThisPerpective(tempBackup.getP1());
+						backupToSave.getP2().copyThisPerpective(tempBackup.getP2());
+						modelAUtiliser.getPanel2().setTranslation(0, 0);
+						modelAUtiliser.getPanel3().setTranslation(0, 0);
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -81,18 +89,22 @@ import javax.swing.KeyStroke;
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				    }
 					
 				    
 				}
 			});
 			menu.getItem(1).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					JFileChooser popupFileChooser = new JFileChooser();
+					int retrival = popupFileChooser.showSaveDialog(null);
+				    if (retrival == JFileChooser.APPROVE_OPTION) {
 							try {
-						      OutputStream file = new FileOutputStream("src/backup.data");
-						      OutputStream buffer = new BufferedOutputStream(file);
-							  ObjectOutput output = new ObjectOutputStream(buffer);
+						      OutputStream file = new FileOutputStream(popupFileChooser.getSelectedFile());
+						      //OutputStream buffer = new BufferedOutputStream(file);
+							  ObjectOutput output = new ObjectOutputStream(file);
 							  output.writeObject(backupToSave);
+							  output.close();
 
 							  }
 						    catch (FileNotFoundException e) {
@@ -101,8 +113,8 @@ import javax.swing.KeyStroke;
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
-							} 
-				    
+							}
+				    }
 				}
 			});
 			menu.getItem(2).addActionListener(new ActionListener() {
