@@ -2,10 +2,10 @@
 
 ## Code
 
-- [ ] Patron GoF "Methode template"
-- [ ] Patron GoF "Strategie"
-- [ ] Patron GoF "Iterateur"
-- [ ] Patron de tests unitaires
+- [X] Patron GoF "Command"
+- [X] Patron GoF "Singleton"
+- [ ] Patron GoF "serializer"
+- [X] Patron GoF "Model - View - Controller"
 - [ ] Commentaires
 - [ ] Dernière validation avant la remise
 
@@ -17,6 +17,7 @@
 - [ ] Introduction
 - [ ] Responsabilités des classes
 - [ ] Diagramme de classes
+- [ ] Explication des patrons
 - [ ] Description de conception
 - [ ] Faiblesses de conception
 - [ ] Diagramme de sequence
