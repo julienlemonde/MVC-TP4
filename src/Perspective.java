@@ -69,6 +69,13 @@ public class Perspective implements Serializable{
 			this.translateY = y;
 			
 		}
+		public void copyThisPerpective(Perspective p){
+			this.translateX = p.getTranslateX();
+			this.translateY = p.getTranslateY();
+			this.scale = p.getScale();
+			this.positionXDepart = p.getPositionXDepart();
+			this.positionYDepart = p.getPositionYDepart();
+		}
 		
 
 		

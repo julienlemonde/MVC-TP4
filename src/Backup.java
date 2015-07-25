@@ -19,4 +19,10 @@ public class Backup implements Serializable{
 	public void setP2(Perspective p){
 		this.p2 = p;
 	}
+	public Perspective getP1(){
+		return this.p1;
+	}
+	public Perspective getP2(){
+		return this.p2;
+	}
 }
