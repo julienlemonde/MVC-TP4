@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 public class ObserverImage implements Observer{
 
 	@Override
+	/**
+	 * Methode pour faire un update apres avoir recu un une notification de la classe
+	 * ecouteurMenu
+	 */
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		try {

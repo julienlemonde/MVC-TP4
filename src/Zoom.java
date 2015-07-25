@@ -15,5 +15,10 @@ public class Zoom implements Command {
 		this.panel.setScale(notchesZoom);
 	}
 	
+	public void undo() {
+		this.panel.setScale(-notchesZoom);
+		
+	}
+	
 
 }

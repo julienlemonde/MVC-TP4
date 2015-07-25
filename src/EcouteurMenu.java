@@ -19,9 +19,13 @@ public class EcouteurMenu extends Observable implements ActionListener{
 		this.model = model;
 		this.addObserver(obs);
 	}
+	/**
+	 * Methode qui est exécuté lorsque le bouton choisir image est appuyer
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		
+		//Cree un filtre pour seulement pouvoir choisir des images
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
 		JFileChooser ImageAchoisir = new JFileChooser();
 		ImageAchoisir.setFileFilter(filter);
@@ -35,6 +39,10 @@ public class EcouteurMenu extends Observable implements ActionListener{
 		
 		}
 	}
+	/**
+	 * Accesseur du model
+	 * @return Retourne un objet de type Model
+	 */
 	public Model getModel()
 	{
 		return this.model;

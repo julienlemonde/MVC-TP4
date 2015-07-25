@@ -5,15 +5,17 @@ import java.util.Observable;
 
 public class Model extends Observable implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 2975882143448572952L;
 	private Image img;
 	private ImagePanel imgpanel;
 	private ImagePanel imgpanel2;
 	private ImagePanel imgpanel3;
 	
+	/**
+	 * Constructeur de notre model
+	 * @param img l'image qui sera dans tous les panels
+	 */
 	public Model(Image img)
 	{
 		this.img = img;
@@ -23,10 +25,19 @@ public class Model extends Observable implements Serializable{
 		
 	}
 
+	/**
+	 * Accesseur de l'image 
+	 * @return Un objet de type image
+	 */
 	public Image getImg() {
 		return img;
 	}
 
+	/**
+	 * Mutateur de l'image dans le model, Quand on change l'image on reinitialise les
+	 * perspective
+	 * @param img La nouvelle image
+	 */
 	public void setImg(Image img) {
 		this.img = img;
 		imgpanel.setImage(img);
@@ -35,15 +46,26 @@ public class Model extends Observable implements Serializable{
 		setChanged();
 		notifyObservers(this.img);
 	}
-
+	
+	/**
+	 * Accesseur du premier image panel
+	 * @return Un objet du type Image Panel
+	 */
 	public ImagePanel getPanel1() {
 		return imgpanel;
 	}
 
-
+	/**
+	 * Accesseur du deuxieme image panel
+	 * @return Un objet du type Image Panel
+	 */
 	public ImagePanel getPanel2(){
 		return imgpanel2;
 	}
+	/**
+	 * Accesseur du troisieme image panel
+	 * @return Un objet du type Image Panel
+	 */
 	public ImagePanel getPanel3()
 	{
 		return imgpanel3;

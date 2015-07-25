@@ -18,4 +18,8 @@ public class Translation implements Command {
 		this.panel.setTranslation(witdh, height);
 		
 	}
+	public void undo()
+	{
+		this.panel.setTranslation(-witdh, -height);
+	}
 }
