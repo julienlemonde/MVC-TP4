@@ -20,6 +20,11 @@ public class Image extends JLabel implements Serializable{
 	private int y;
 	BufferedImage image;
 
+	/**
+	 * Constructeur qui prend un fichier et le transforme en image
+	 * @param file Le fichier qui a ete choisi par l'utilisateur 
+	 * @throws IOException Si le fichier est null
+	 */
 	public Image(File file) throws IOException
 	{
 		
@@ -29,19 +34,26 @@ public class Image extends JLabel implements Serializable{
         
 	}
 	
-	
+	/**
+	 * Accesseur de la longueur de l'image
+	 * @return la longeur x de l'image
+	 */
 	public int getWidth()
 	{
 		return x;
 	}
-
+	/**
+	 * Accesseur de la hauteur de l'image
+	 * @return la longueur y de l'image
+	 */
 	public int getHeight()
 	{
 		return y;
 	}
-	
-	
-	
+	/**
+	 * Accesseur de l'image
+	 * @return Un objet de type BufferedImage
+	 */
 	public BufferedImage getBufferedImage()
 	{
 		return image;

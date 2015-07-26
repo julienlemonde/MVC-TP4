@@ -13,14 +13,21 @@ public class ImagePanel extends JPanel{
 	 private Image img;
 	 private Dimension dms;
 	 private Perspective perspective;
+	 private double scale;
+	 private double ratiowidth;
+	 private double ratioheight;
 	 
-	
+	/**
+	 * Constructeur du panneau d'image
+	 * @param img L'image qui sera afficher
+	 * @param AEcouter True s'il doit etre ecouter ou non
+	 */
 	public ImagePanel(Image img, boolean AEcouter)
 	{
 		this.img = img;
 		dms = new Dimension(400,300);
 		this.setPreferredSize(dms);
-		perspective = new Perspective(0, 0, 0, 0, 0.35);
+		perspective = new Perspective(0, 0, 0, 0, 0.33333333);
 		
 		
 		
@@ -37,6 +44,7 @@ public class ImagePanel extends JPanel{
         if(img != null){
         	
         	g.drawImage(img.getBufferedImage(), 0, 0,dms.width ,dms.height,this);
+        	
 	
         	}
         	
@@ -45,6 +53,11 @@ public class ImagePanel extends JPanel{
                  
         
     }
+	/**
+	 * Methode pour savoir de quelle type d'action il s'Agit et paint de facon différente
+	 * @param g Graphic de super
+	 * @param Type Le type d'Action il s'agit
+	 */
 	public void paintComponent(Graphics g, String Type){
 		super.paintComponent(g);
 		double z = perspective.getScale()*perspective.getScale();
@@ -74,17 +87,25 @@ public class ImagePanel extends JPanel{
 
 		//On lib��re un peu de m��moire histoire de laisser le GC tranquille un peu plus longtemps
 		ourGraphics.dispose();
-
+		
 	}
 	
+	/**
+	 * Accesseur de l'image du panel
+	 * @return Un objet de type Image
+	 */
 	public Image getImage()
 	{
 		return img;
 	}
+	/**
+	 * Mutateur de l'image du panel
+	 * @param nouvelleImage La nouvelle image
+	 */
 	public void setImage(Image nouvelleImage)
 	{
 		img = nouvelleImage;
-		perspective = new Perspective(0, 0, 0, 0, 0.55);
+		perspective = new Perspective(0, 0, 0, 0, .55);
 		repaint();
 	}
 	public Dimension getDimension(){

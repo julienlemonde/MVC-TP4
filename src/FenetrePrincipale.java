@@ -39,30 +39,23 @@ import javax.swing.JLabel;
 		 */
 		public FenetrePrincipale() throws IOException{
 			
-			
-			
-			
-			/*Image ImageAMontrer = new Image(menu.getImageChoisi());
-			ImagePanel imgpanel = new ImagePanel(ImageAMontrer,false);
-			ImagePanel imgpanel2 = new ImagePanel(ImageAMontrer,true);
-			ImagePanel imgpanel3 = new ImagePanel(ImageAMontrer, true);*/
-			Model newModel = new Model(new Image(new File("src/yosemite-2.jpg")));
+			//Instancie un model selon une image par defaut
+			MultipleView newModel = new MultipleView(new Image(new File("src/yosemite-2.jpg")));
+			//Cree un nouveau menu
 			MenuFenetre menu = new MenuFenetre(newModel);
 			menu.setModelToSave(newModel);
 			
 			
 			this.setLayout(new BorderLayout());
 			this.add(menu,BorderLayout.NORTH);
-			/*this.add(imgpanel,BorderLayout.WEST);
-			this.add(imgpanel2,BorderLayout.CENTER);
-			this.add(imgpanel3,BorderLayout.EAST);*/
+			//Ajoute les imagePanels au Jframe
 			this.add(newModel.getPanel1(),BorderLayout.WEST);
 			this.add(newModel.getPanel2(),BorderLayout.CENTER);
 			this.add(newModel.getPanel3(),BorderLayout.EAST);
 			
 			this.pack();
-			this.setVisible(true); // Rend la fen������tre principale visible.
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... ������ r������viser selon le comportement que vous d������sirez ...
+			this.setVisible(true); 
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 
 	}

@@ -12,16 +12,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class EcouteurMenu extends Observable implements ActionListener{
 
 	private File fileimg;
-	private Model model;
-	public EcouteurMenu(Model model) {
+	private MultipleView model;
+	public EcouteurMenu(MultipleView model) {
 		// TODO Auto-generated constructor stub
 		ObserverImage obs = new ObserverImage();
 		this.model = model;
 		this.addObserver(obs);
 	}
+	/**
+	 * Methode qui est exécuté lorsque le bouton choisir image est appuyer
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		
+		//Cree un filtre pour seulement pouvoir choisir des images
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
 		JFileChooser ImageAchoisir = new JFileChooser();
 		ImageAchoisir.setFileFilter(filter);
@@ -35,7 +39,11 @@ public class EcouteurMenu extends Observable implements ActionListener{
 		
 		}
 	}
-	public Model getModel()
+	/**
+	 * Accesseur du model
+	 * @return Retourne un objet de type Model
+	 */
+	public MultipleView getModel()
 	{
 		return this.model;
 	}
