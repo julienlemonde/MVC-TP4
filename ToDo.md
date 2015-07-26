@@ -4,9 +4,9 @@
 
 - [X] Patron GoF "Command"
 - [X] Patron GoF "Singleton"
-- [ ] Patron GoF "serializer"
+- [X] Patron GoF "serializer"
 - [X] Patron GoF "Model - View - Controller"
-- [ ] Commentaires
+- [X] Commentaires
 - [ ] Dernière validation avant la remise
 
 
@@ -14,11 +14,11 @@
 
 ## Rapport
 
-- [ ] Introduction
-- [ ] Responsabilités des classes
-- [ ] Diagramme de classes
+- [X] Introduction
+- [X] Responsabilités des classes
+- [X] Diagramme de classes
 - [ ] Explication des patrons
-- [ ] Description de conception
+- [X] Description de conception
 - [ ] Faiblesses de conception
 - [ ] Diagramme de sequence
 - [ ] Decision d'implémentation
