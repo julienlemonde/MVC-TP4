@@ -3,7 +3,7 @@ import java.util.Observable;
 
 
 
-public class Model extends Observable implements Serializable{
+public class MultipleView extends Observable implements Serializable{
 
 	
 	private static final long serialVersionUID = 2975882143448572952L;
@@ -16,7 +16,7 @@ public class Model extends Observable implements Serializable{
 	 * Constructeur de notre model
 	 * @param img l'image qui sera dans tous les panels
 	 */
-	public Model(Image img)
+	public MultipleView(Image img)
 	{
 		this.img = img;
 		imgpanel = new ImagePanel(img,false);

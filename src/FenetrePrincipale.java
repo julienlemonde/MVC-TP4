@@ -40,7 +40,7 @@ import javax.swing.JLabel;
 		public FenetrePrincipale() throws IOException{
 			
 			//Instancie un model selon une image par defaut
-			Model newModel = new Model(new Image(new File("src/yosemite-2.jpg")));
+			MultipleView newModel = new MultipleView(new Image(new File("src/yosemite-2.jpg")));
 			//Cree un nouveau menu
 			MenuFenetre menu = new MenuFenetre(newModel);
 			menu.setModelToSave(newModel);

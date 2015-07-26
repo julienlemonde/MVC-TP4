@@ -35,9 +35,9 @@ import javax.swing.KeyStroke;
 		 */
 		private File ImageChoisi;
 		private EcouteurMenu ecouteur;
-		private Model modelAUtiliser;
+		private MultipleView modelAUtiliser;
 		private Backup backupToSave;
-		public MenuFenetre(Model model) {
+		public MenuFenetre(MultipleView model) {
 			modelAUtiliser = model;
 			ecouteur = new EcouteurMenu(modelAUtiliser);
 			addMenuFichier();
@@ -144,7 +144,7 @@ import javax.swing.KeyStroke;
 		{
 			return ImageChoisi;
 		}
-		public void setModelToSave(Model model){
+		public void setModelToSave(MultipleView model){
 			this.backupToSave = new Backup(model.getPanel2().getPerspective(), model.getPanel3().getPerspective());
 		}
 	}

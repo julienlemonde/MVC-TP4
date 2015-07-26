@@ -12,8 +12,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class EcouteurMenu extends Observable implements ActionListener{
 
 	private File fileimg;
-	private Model model;
-	public EcouteurMenu(Model model) {
+	private MultipleView model;
+	public EcouteurMenu(MultipleView model) {
 		// TODO Auto-generated constructor stub
 		ObserverImage obs = new ObserverImage();
 		this.model = model;
@@ -43,7 +43,7 @@ public class EcouteurMenu extends Observable implements ActionListener{
 	 * Accesseur du model
 	 * @return Retourne un objet de type Model
 	 */
-	public Model getModel()
+	public MultipleView getModel()
 	{
 		return this.model;
 	}
