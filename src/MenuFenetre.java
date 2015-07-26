@@ -1,4 +1,19 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: MVC-TP4
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
 
+Professeur : Francis Cardinal
+Nom du fichier: MenuFenetre.java
+Date créé: 2015-07-01
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-07-01
+*******************************************************/ 
 
 
 	import java.awt.Toolkit;
@@ -30,13 +45,15 @@ import javax.swing.KeyStroke;
 	
 	public class MenuFenetre extends JMenuBar {
 		
-		/**
-		 * 
-		 */
+		
 		private File ImageChoisi;
 		private EcouteurMenu ecouteur;
 		private MultipleView modelAUtiliser;
 		private Backup backupToSave;
+		/**
+		 * Constructeur du menu de la fenetre principal
+		 * @param model
+		 */
 		public MenuFenetre(MultipleView model) {
 			modelAUtiliser = model;
 			ecouteur = new EcouteurMenu(modelAUtiliser);
@@ -44,7 +61,9 @@ import javax.swing.KeyStroke;
 			addMenuChoisirImage();
 			
 		}
-		
+		/**
+		 * Ajoute le menu Fichier dans la bar de menu
+		 */
 		protected void addMenuFichier() {
 			JMenu menu = new JMenu("Fichier");
 			   menu.add(new JMenuItem("Ouvrir"));
@@ -52,7 +71,7 @@ import javax.swing.KeyStroke;
 	           menu.add(new JMenuItem("Undo"));
 	           menu.add(new JMenuItem("Quitter"));
 	        
-	       
+	       //Action listener pour le sous-menu Ouvrir
 			menu.getItem(0).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -84,6 +103,7 @@ import javax.swing.KeyStroke;
 				    
 				}
 			});
+			//Action Listener pour le sous-menu sauvegarder
 			menu.getItem(1).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					JFileChooser popupFileChooser = new JFileChooser();
@@ -107,19 +127,21 @@ import javax.swing.KeyStroke;
 				    }
 				}
 			});
+			//Action listener pour le sous-menu Undo
 			menu.getItem(2).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GestionnaireCommande.getInstance().Undo();
 				    
 				}
 			});
-				
+				//Action listener pour le sous-menu exit
 			menu.getItem(3).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					System.exit(0);
 				    
 				}
 			});
+			//Ajout des raccourci clavier
 			KeyStroke strokeZ = KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
 			KeyStroke strokeO = KeyStroke.getKeyStroke(KeyEvent.VK_O, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
 			KeyStroke strokeS = KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
@@ -129,6 +151,9 @@ import javax.swing.KeyStroke;
 			menu.getItem(2).setAccelerator(strokeZ);
 			add(menu);
 		}
+		/**
+		 * Ajout du menu Choisir Image dans le menu bar
+		 */
 		protected void addMenuChoisirImage() {
 			final JMenuItem menu = new JMenuItem("ChoisirImage");
 	       
@@ -139,11 +164,18 @@ import javax.swing.KeyStroke;
 				    
 				}
 		
-			
+		/**
+		 * Accesseur du fichier choisi pour creer une image
+		 * @return Un objet de type File
+		 */
 		public File getImageChoisi()
 		{
 			return ImageChoisi;
 		}
+		/**
+		 * Mutateur d'un model pour sauvegarder les perspectives
+		 * @param model Le model pour lequel nous devons aller chercher les perspectives
+		 */
 		public void setModelToSave(MultipleView model){
 			this.backupToSave = new Backup(model.getPanel2().getPerspective(), model.getPanel3().getPerspective());
 		}

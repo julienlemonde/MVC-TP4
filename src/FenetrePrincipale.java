@@ -1,16 +1,19 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: MVC-TP4
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
 
-
-	/******************************************************
-	Cours:  LOG121
-	Projet: Squelette du laboratoire #1
-	Nom du fichier: FenetrePrincipale.java
-	Date cr������������: 2013-05-03
-	*******************************************************
-	Historique des modifications
-	*******************************************************
-	*@author Patrice Boucher
-	2013-05-03 Version initiale
-	*******************************************************/  
+Professeur : Francis Cardinal
+Nom du fichier: FenetrePrincipal.java
+Date créé: 2015-07-01
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-07-01
+*******************************************************/   
 
 	import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;

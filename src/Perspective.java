@@ -1,3 +1,19 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: MVC-TP4
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: Perspective.java
+Date créé: 2015-07-15
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-07-15
+*******************************************************/ 
 import java.awt.Dimension;
 import java.io.Serializable;
 

@@ -1,3 +1,20 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: MVC-TP4
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: ImagePanel.java
+Date créé: 2015-07-01
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-07-01
+*******************************************************/ 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -38,7 +55,9 @@ public class ImagePanel extends JPanel{
 			this.addMouseWheelListener(souris);
 		}
 	}
-	
+	/**
+	 * Methode pour faire apparaitre les images pour la premiere fois
+	 */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
         if(img != null){
@@ -108,22 +127,38 @@ public class ImagePanel extends JPanel{
 		perspective = new Perspective(0, 0, 0, 0, .55);
 		repaint();
 	}
+	/**
+	 * Accesseur de la dimension des images panel
+	 * @return Un objet de type Dimension
+	 */
 	public Dimension getDimension(){
 		return dms;
 	}
-	
+	/**
+	 * Mutateur de la translation
+	 * @param witdh Le nouveau X
+	 * @param height Le nouveau Y
+	 */
 	public void setTranslation(int witdh,int height)
 	{
 		perspective.setTranslateX(witdh);
 		perspective.setTranslateY(height);
 		paintComponent(super.getGraphics(),"translation");
 	}
+	/**
+	 * Mutateur du scale pour le zoom
+	 * @param nombreZoom Le nombre de zoom effectuer par la souris
+	 */
 	public void setScale(int nombreZoom)
 	{
 		perspective.setScale(perspective.getScale() + (.01 * nombreZoom));
 		perspective.setScale(Math.max(0.00001, perspective.getScale())); 
 		paintComponent(super.getGraphics(),"scale");
 	}
+	/**
+	 * Accesseur de la perspective dans l'image panel
+	 * @return Un objet de type perspective
+	 */
 	public Perspective getPerspective(){
 		return perspective;
 	}

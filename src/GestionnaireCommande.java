@@ -1,3 +1,20 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: MVC-TP4
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: GestionnaireCommande.java
+Date créé: 2015-07-10
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-07-10
+*******************************************************/ 
+
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Stack;
