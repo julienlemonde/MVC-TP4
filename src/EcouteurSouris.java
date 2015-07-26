@@ -18,7 +18,10 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 	private int Notches;
 	private boolean scrolled;
 	
-	
+	/**
+	 * Constructeur de l'ecouteur de souris 
+	 * @param imgpanel Le panneau sur lequel l'action a ete executer
+	 */
 	public EcouteurSouris(ImagePanel imgpanel) {
 		// TODO Auto-generated constructor stub
 		ObserverSouris obs = new ObserverSouris();
@@ -32,6 +35,10 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 	}
 
 	@Override
+	/**
+	 * Methode pour garder en memoire l'endroit ou la souris etait dans le panneau
+	 * lors click droit maintenu
+	 */
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		xPressed = e.getX();
@@ -40,6 +47,10 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 	}
 
 	@Override
+	/**
+	 * Methode pour calculer la translation entre l'endroit de la souris d'origine et
+	 * l'endroit ou la souris a ete relacher
+	 */
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -48,8 +59,8 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 		xRelease = e.getX();
 		yRelease = e.getY();
 		translation = new Dimension(xRelease - xPressed, yRelease - yPressed);
-		System.out.println(translation.width+ ","+translation.height);
 		setChanged();
+		//Notifie les observers de la classe
 		notifyObservers(translation);
 	}
 
@@ -65,6 +76,9 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 		
 	}
 	@Override
+	/**
+	 * Methode pour extraire le nombre de scroll de la souris
+	 */
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -73,7 +87,10 @@ public class EcouteurSouris extends Observable implements MouseListener, MouseWh
 		notifyObservers(Notches);
 		
 	}
-	
+	/**
+	 * Accesseur du panneau d'image sur lequel la souris etait
+	 * @return Un objet de type panneau d'image
+	 */
 	public ImagePanel getImagePanel()
 	{
 		return panel;

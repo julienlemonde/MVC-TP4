@@ -1,17 +1,8 @@
 
-	/******************************************************
-	Cours:  LOG121
-	Projet: Squelette du laboratoire #1
-	Nom du fichier: MenuFenetre.java
-	Date cr������������: 2013-05-03
-	*******************************************************
-	Historique des modifications
-	*******************************************************
-	*@author Patrice Boucher
-	2013-05-03 Version initiale
-	*******************************************************/  
 
-	import java.awt.event.ActionEvent;
+
+	import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.BufferedInputStream;
@@ -36,9 +27,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-	/**
-	 * Cr������e le menu de la fen������tre de l'application������
-	 */
+	
 	public class MenuFenetre extends JMenuBar {
 		
 		/**
@@ -49,17 +38,18 @@ import javax.swing.KeyStroke;
 		private Model modelAUtiliser;
 		private Backup backupToSave;
 		public MenuFenetre(Model model) {
-			ImageChoisi = new File("src/yosemite-2.jpg");
 			modelAUtiliser = model;
 			ecouteur = new EcouteurMenu(modelAUtiliser);
 			addMenuFichier();
 			addMenuChoisirImage();
+			
 		}
 		
 		protected void addMenuFichier() {
 			JMenu menu = new JMenu("Fichier");
 			   menu.add(new JMenuItem("Ouvrir"));
 	           menu.add(new JMenuItem("Sauvegarder"));
+	           menu.add(new JMenuItem("Undo"));
 	           menu.add(new JMenuItem("Quitter"));
 	        
 	       
@@ -119,10 +109,24 @@ import javax.swing.KeyStroke;
 			});
 			menu.getItem(2).addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GestionnaireCommande.getInstance().Undo();
+				    
+				}
+			});
+				
+			menu.getItem(3).addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
 					System.exit(0);
 				    
 				}
 			});
+			KeyStroke strokeZ = KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+			KeyStroke strokeO = KeyStroke.getKeyStroke(KeyEvent.VK_O, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+			KeyStroke strokeS = KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+
+			menu.getItem(0).setAccelerator(strokeO);
+			menu.getItem(1).setAccelerator(strokeS);
+			menu.getItem(2).setAccelerator(strokeZ);
 			add(menu);
 		}
 		protected void addMenuChoisirImage() {
@@ -134,7 +138,7 @@ import javax.swing.KeyStroke;
 				
 				    
 				}
-			
+		
 			
 		public File getImageChoisi()
 		{
